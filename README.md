@@ -24,13 +24,14 @@ To Use OESFeedQueue follow the below steps,
 ```
 For most common keys, such as Recency, Frequency & access time, we have defined key names and their weightage.
 
-** Default weightage are defined based on our multiple experiments, so I encourage to use them but still each value is customizable **
+**Default weightage are defined based on our multiple experiments, so I encourage to use them but still each value is customizable**
 
-3. Initialise the OESFeedQueue with the List of data which we already saved into persistant storage such as Database,
-** It would be thelist<T implemented OESFeedItem> , T is the model class which we defined in step 1 **
+3. Initialise the OESFeedQueue with the List of data which we already saved into persistant storage such as Database, </br>
+**It should be the return as. list<T implemented OESFeedItem> where T is the model class which we defined in step 1**
 ```
     oesFeedQueue.prePopulateQueue(getStoredItemList())
-    //getStoredItemList will return the data from DB as List<T extends OESFeedItem>
+    //getStoredItemList will return the data from DB as List<T extends OESFeedItem>, </br>
+    // Below is the sample code which keeps track of app launch by a specific user
 
     /**
      * This should ideally be populated from persistant storage such as database
@@ -79,8 +80,9 @@ For most common keys, such as Recency, Frequency & access time, we have defined 
 
 ```
 
-4. setup is done, Now add the individual entry based on actions taken by user.
+4. setup is done, Now add the individual entry based on actions taken by user. 
 ```
+    //User accessed facebook again
     fun performFewOps() {
         var valueMap1 = HashMap<String, String>()
         valueMap1.put(Constants.RECENCY_KEY, System.currentTimeMillis().toString())//when adding entry then timestammp would be current time only
@@ -109,5 +111,13 @@ For most common keys, such as Recency, Frequency & access time, we have defined 
         findViewById<TextView>(R.id.result).setText(resultString.toString())
     }
 ```
+    
+6. Here is the result,
+```
+    2021-10-28 23:59:02.729 11053-11053/com.oescoreengine V/order: name : Facebook | score : 280.0
+    2021-10-28 23:59:02.729 11053-11053/com.oescoreengine V/order: name : Linkedin | score : 210.0
+    2021-10-28 23:59:02.729 11053-11053/com.oescoreengine V/order: name : Whatsapp | score : 209.96
+    2021-10-28 23:59:02.729 11053-11053/com.oescoreengine V/order: name : Twitter | score : 209.92
+```
 
-** Please refer the sample code, to see the all implementation step by step **
+**Please refer the sample code, to see the all implementation step by step**
