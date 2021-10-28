@@ -5,21 +5,21 @@ To Use OESFeedQueue follow the below steps,
 
 1. Create a model class implementing the OESFeedItem, where you should define below method,
 ```
-fun getUniqueId(): String
+    fun getUniqueId(): String
 
-fun getValue(key: String): String?
+    fun getValue(key: String): String?
 
-fun setValue(key: String, value: String)
+    fun setValue(key: String, value: String)
 ```
 
 2. Define the input keys and their weightage which will contribute into the score calculation. 
 
 ```
-var inputKeyList = ArrayList<InputKey>()
-inputKeyList.add(InputKey(Constants.RECENCY_KEY, InputKey.CURRENT_TIMESTAMP, Constants.DEFAULT_RECENCY_WEIGHTAGE))
-inputKeyList.add(InputKey(Constants.FREQUENCY_KEY, InputKey.FREQUENCY, Constants.DEFAULT_FREQUENCY_WEIGHTAGE))
-inputKeyList.add(InputKey(Constants.ACCESS_DURATION, InputKey.CUSTOM, Constants.DEFAULT_ACCESS_WEIGHTAGE))
-inputKeyList.add(InputKey("custom_key", InputKey.CUSTOM, 0.1f))
+    var inputKeyList = ArrayList<InputKey>()
+    inputKeyList.add(InputKey(Constants.RECENCY_KEY, InputKey.CURRENT_TIMESTAMP, Constants.DEFAULT_RECENCY_WEIGHTAGE))
+    inputKeyList.add(InputKey(Constants.FREQUENCY_KEY, InputKey.FREQUENCY, Constants.DEFAULT_FREQUENCY_WEIGHTAGE))
+    inputKeyList.add(InputKey(Constants.ACCESS_DURATION, InputKey.CUSTOM, Constants.DEFAULT_ACCESS_WEIGHTAGE))
+    inputKeyList.add(InputKey("custom_key", InputKey.CUSTOM, 0.1f))
 
 ```
 For most common keys, such as Recency, Frequency & access time, we have defined key names and their weightage.
@@ -29,10 +29,10 @@ For most common keys, such as Recency, Frequency & access time, we have defined 
 3. Initialise the OESFeedQueue with the List of data which we already saved into persistant storage such as Database,
 ** It would be thelist<T implemented OESFeedItem> , T is the model class which we defined in step 1 **
 ```
-oesFeedQueue.prePopulateQueue(getStoredItemList())
-//getStoredItemList will return the data from DB as List<T extends OESFeedItem>
+    oesFeedQueue.prePopulateQueue(getStoredItemList())
+    //getStoredItemList will return the data from DB as List<T extends OESFeedItem>
 
-/**
+    /**
      * This should ideally be populated from persistant storage such as database
      */
     fun getStoredItemList(): ArrayList<ModelClass> {
@@ -81,7 +81,7 @@ oesFeedQueue.prePopulateQueue(getStoredItemList())
 
 4. setup is done, Now add the individual entry based on actions taken by user.
 ```
-fun performFewOps() {
+    fun performFewOps() {
         var valueMap1 = HashMap<String, String>()
         valueMap1.put(Constants.RECENCY_KEY, System.currentTimeMillis().toString())//when adding entry then timestammp would be current time only
         var freq = oesFeedQueue.getValueBySpecificKeyForItem("2", Constants.FREQUENCY_KEY)
@@ -99,7 +99,7 @@ fun performFewOps() {
 
 5. Finally test the logic, if it is sorted as expected or not :)
 ```
-fun showAndCheckTheData() {
+    fun showAndCheckTheData() {
         var list = oesFeedQueue.getSortedList(Constants.Descending)
         var resultString =  StringBuilder()
         for(item in list) {
