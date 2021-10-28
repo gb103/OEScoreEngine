@@ -121,3 +121,28 @@ For most common keys, such as Recency, Frequency & access time, we have defined 
 ```
 
 **Please refer the sample code, to see the all implementation step by step**
+    
+
+**All public methods which are accessible,**
+    
+ ```
+    fun getValueBySpecificKeyForItem(uniqueueId: String, key: String): String?
+
+    fun addItem(item: T)
+
+    fun removeLeastScoreItem(): T
+
+    fun prePopulateQueue(itemList: ArrayList<T>)
+
+    fun getSortedList(@Constants.SortOrder sortOrder: Int): ArrayList<T>
+
+    fun isItemExists(uniqueId: String): Boolean
+
+    fun getLeastScoreItem(): T
+
+    fun getHighestScoreItem(): T
+
+    fun clearQueue()
+    
+```
+    
