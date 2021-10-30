@@ -1,6 +1,11 @@
 # OEScoreEngine
 OESFeedQueue is an advanced library for queue management which replace the Lru way of caching. It sorts the items as per their score, which is calculated based on Recency, Frequency, Access times &amp; Custom Parameters.
 
+To include OESFeedQueue dependency into your app,
+```
+implementation 'com.bamfaltech:oescoreengine-core:1.0.0'
+```
+
 To Use OESFeedQueue follow the below steps,
 
 1. Create a model class implementing the OESFeedItem, where you should define below method,
