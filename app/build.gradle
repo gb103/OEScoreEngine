@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation project(':oescoreengine-core')
+    //will be easy to use below, in case if you are implementing this into your own app
+    //implementation 'com.bamfaltech:oescoreengine-core:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
